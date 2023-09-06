@@ -1,8 +1,6 @@
 package com.devsuperior.sistemaEventos.entities;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +10,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -35,8 +32,8 @@ public class Atividade {
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
-	@OneToMany(mappedBy = "atividade")
-	private List<Bloco> blocos = new ArrayList<>();
+	 @OneToMany(mappedBy="atividade")
+	 private Set<Bloco> blocos = new HashSet<>() ;
 	
 	public Atividade() {
 
@@ -109,6 +106,11 @@ public class Atividade {
 			return false;
 		Atividade other = (Atividade) obj;
 		return Objects.equals(id, other.id);
+	}
+
+
+	public Set<Bloco> getBlocos() {
+		return blocos;
 	}
 
 
