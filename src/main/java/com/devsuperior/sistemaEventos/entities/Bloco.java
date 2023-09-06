@@ -25,7 +25,7 @@ public class Bloco {
 		@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 		private Instant fim;
 		
-	    //...
+
 	    @ManyToOne
 	    @JoinColumn(name="atividade_id", insertable = false, updatable = false)
 		private Atividade atividade;

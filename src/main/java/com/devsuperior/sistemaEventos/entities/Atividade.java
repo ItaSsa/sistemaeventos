@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -32,8 +33,11 @@ public class Atividade {
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
-	 @OneToMany(mappedBy="atividade")
-	 private Set<Bloco> blocos = new HashSet<>() ;
+	@OneToMany(mappedBy="atividade")
+	private Set<Bloco> blocos = new HashSet<>() ;
+	
+	@ManyToMany(mappedBy = "atividades")
+	private Set<Participante> participantes = new HashSet<>();
 	
 	public Atividade() {
 
@@ -111,6 +115,11 @@ public class Atividade {
 
 	public Set<Bloco> getBlocos() {
 		return blocos;
+	}
+
+
+	public Set<Participante> getParticipantes() {
+		return participantes;
 	}
 
 
